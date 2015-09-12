@@ -1,21 +1,15 @@
 <div class="mdl-layout__tab-panel is-active" id="overview">
-  <pre> {{ vm.babies | json  }}</pre>
-
+  
   <section id="layout-section" class="mdl-components__page mdl-grid is-active">
 
-
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--4-col">
+      <div class="mdl-cell mdl-cell--4-col" ng-repeat="baby in vm.babies">
         <div class="demo-card-wide mdl-card mdl-shadow--2dp">
           <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">
-
-
-            </h2>
+            <h2 class="mdl-card__title-text">{{baby.name}}</h2>
           </div>
           <div class="mdl-card__supporting-text">
-
-            <h4>35 C</h4>
+            <h4>{{baby.temp}} C</h4>
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -34,14 +28,12 @@
           </div>
         </div>
       </div>
-
     </div>
+
   </section>
-
-
 </div>
-<div class="mdl-layout__tab-panel" id="features">
 
+<div class="mdl-layout__tab-panel" id="features">
   <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
       <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
@@ -81,5 +73,4 @@
       <li class="mdl-menu__item" tabindex="-1">Dolor</li>
     </ul></div>
   </section>
-
 </div>
