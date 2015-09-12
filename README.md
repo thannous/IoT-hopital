@@ -1,1 +1,3 @@
-# IoT-hopital
+# babyCloud
+
+a [Sails](http://sailsjs.org) application
