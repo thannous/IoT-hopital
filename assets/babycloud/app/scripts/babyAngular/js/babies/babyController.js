@@ -2,16 +2,16 @@
     'use strict';
 
     angular
-        .module('userApp')
-        .controller('UserController', userController)
-        .controller('viewUserController', viewUserController)
-        .controller('editUserController', editUserController);
+        .module('babyApp')
+        .controller('babyController', babyController)
+        .controller('viewBabyController', viewBabyController)
+        .controller('editBabyController', editBabyController);
 
 
-    userController.$inject = ['$scope','userService'];
-    viewUserController.$inject = ['$scope','$routeParams','userService','$location'];
-    editUserController.$inject = ['$scope','$routeParams','userService','$location'];
-    function userController($scope,userService) {
+  babyController.$inject = ['$scope','babyService'];
+  viewBabyController.$inject = ['$scope','$routeParams','babyService','$location'];
+  editBabyController.$inject = ['$scope','$routeParams','babyService','$location'];
+    function babyController($scope,babyService) {
 
 
         /*
@@ -22,7 +22,7 @@
 
         var vm = this;
 
-        vm.users = {};
+        vm.babies = {};
         vm.create = createUser;
         vm.delete = deleteUser
 
@@ -42,22 +42,25 @@
         }
 
         function getUsers() {
-            return userService.fetch()
+            return babyService.fetch()
                 .success(function(data) {
-                    vm.users = data;
-                    return vm.users;
+                console.log("************");
+                console.log(data)
+                vm.babies = data;
+                console.log("************");
+                    return vm.babies;
                 });
         }
 
         function createUser(user) {
             console.log("create")
-            userService.create(user)
+              babyService.create(user)
                 .success(function(data) {
 
-                    vm.users = data;
-                    userService.fetch()
+                    vm.babies = data;
+              babyService.fetch()
                         .success(function(data) {
-                            vm.users = data;
+                            vm.babies = data;
 
                         });
                     $scope.user = {};
@@ -65,10 +68,10 @@
         }
 
         function deleteUser(user) {
-            var index = vm.users.indexOf(user);
-            userService.remove(user.id)
+            var index = vm.babies.indexOf(user);
+          babyService.remove(user.id)
                 .success(function(data) {
-                    vm.users.splice(index, 1);
+                    vm.babies.splice(index, 1);
 
                 });
         }
@@ -78,7 +81,7 @@
 
 
 
-    function viewUserController($scope, $routeParams,userService, $location) {
+    function viewBabyController($scope, $routeParams,babyService, $location) {
 
 
         /*
@@ -108,7 +111,7 @@
             /**
              * Step 2
              * */
-            return userService.fetchOne(id)
+            return babyService.fetchOne(id)
                 .success(function (data) {
                     /**
                      * Step 3
@@ -120,10 +123,10 @@
 
         function deleteUser(user) {
 
-            userService.remove(user.id)
+          babyService.remove(user.id)
                 .success(function(data) {
 
-                    $location.path('/users');
+                    $location.path('/babies');
                 });
         }
 
@@ -132,7 +135,7 @@
 
 
 
-    function editUserController($scope, $routeParams,userService, $location) {
+    function editBabyController($scope, $routeParams,babyService, $location) {
 
 
         /*
@@ -163,7 +166,7 @@
             /**
              * Step 2
              * */
-            return userService.fetchOne(id)
+            return babyService.fetchOne(id)
                 .success(function (data) {
                     /**
                      * Step 3
@@ -174,9 +177,9 @@
         }
         function editUser(data) {
             console.log("edit")
-            userService.update(data)
+          babyService.update(data)
                 .success(function () {
-                    $location.path('/users');
+                    $location.path('/babies');
                 });
         }
 

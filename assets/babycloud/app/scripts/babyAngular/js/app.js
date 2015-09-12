@@ -5,8 +5,9 @@ angular.module('babyApp', [
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'partials/home.html',
-                controller : 'HomeController'
+                templateUrl: '/scripts/babyAngular/partials/babyPanel.html',
+                controller : 'babyController',
+                controllerAs: 'vm'
             })
             .when('/babies', {
                 templateUrl: 'partials/list.html',

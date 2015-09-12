@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('userApp')
-        .factory('userService', userService);
+        .module('babyApp')
+        .factory('babyService', babyService);
 
-    function userService($http) {
+    function babyService($http) {
 
-        var API_URI = '/api/v1/baby';
+        var API_URI = 'http://192.168.100.106:3000/api/v1/baby';
         var service = {
             fetch: fetch,
             create: create,

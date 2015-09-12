@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('userApp')
+        .module('babyApp')
         .controller('HomeController', homeController);
 
 
